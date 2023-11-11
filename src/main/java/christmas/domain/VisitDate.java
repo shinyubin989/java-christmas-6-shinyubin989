@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,6 +10,10 @@ class VisitDate {
 
     VisitDate(int day) {
         this.date = LocalDate.of(2023, 12, day);
+    }
+
+    boolean isWeekend() {
+        return date.getDayOfWeek().equals(DayOfWeek.FRIDAY) || date.getDayOfWeek().equals(DayOfWeek.SATURDAY);
     }
 
     @Override
