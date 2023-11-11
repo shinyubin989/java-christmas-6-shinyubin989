@@ -23,4 +23,8 @@ enum Course {
     static boolean isDessertMenu(Meal meal) {
         return DESSERT.meals.contains(meal);
     }
+
+    static boolean isMainMenu(Meal meal) {
+        return MAIN.meals.contains(meal);
+    }
 }
