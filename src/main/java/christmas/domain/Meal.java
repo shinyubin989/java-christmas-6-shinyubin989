@@ -36,4 +36,8 @@ enum Meal {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(DomainException.MENU_DOES_NOT_EXIST.getMessage()));
     }
+
+    int getPrice() {
+        return price;
+    }
 }
