@@ -34,6 +34,14 @@ class Order {
         }
     }
 
+    int getPriceSum() {
+        return order.stream().mapToInt(OrderUnit::getPrice).sum();
+    }
+
+    int countDessertNum() {
+        return (int) order.stream().filter(OrderUnit::isDessert).count();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
