@@ -38,8 +38,12 @@ class Order {
         return order.stream().mapToInt(OrderUnit::getPrice).sum();
     }
 
-    int countDessertNum() {
-        return (int) order.stream().filter(OrderUnit::isDessert).count();
+    int countDessertMenuNum() {
+        return (int) order.stream().filter(OrderUnit::isDessertMenu).count();
+    }
+
+    int countMainMenuNum() {
+        return (int) order.stream().filter(OrderUnit::isMainMenu).count();
     }
 
     @Override
