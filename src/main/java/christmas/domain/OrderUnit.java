@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import christmas.dto.OrderDto;
-
 import java.util.Objects;
 
 class OrderUnit implements Pair<Meal, Integer> {
@@ -19,12 +17,24 @@ class OrderUnit implements Pair<Meal, Integer> {
         return num;
     }
 
-    public int getNum() {
+    boolean isDessertMenu() {
+        return Course.isDessertMenu(menu);
+    }
+
+    boolean isMainMenu() {
+        return Course.isMainMenu(menu);
+    }
+
+    int getNum() {
         return num;
     }
 
-    public Meal getMenu() {
+    Meal getMenu() {
         return menu;
+    }
+
+    int getPrice() {
+        return menu.getPrice();
     }
 
     @Override
