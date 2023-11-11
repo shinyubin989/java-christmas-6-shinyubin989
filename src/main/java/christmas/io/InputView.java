@@ -1,5 +1,7 @@
 package christmas.io;
 
+import java.util.List;
+
 final class InputView implements InputPort {
 
     private final InputReader inputReader;
@@ -15,5 +17,11 @@ final class InputView implements InputPort {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(IoException.DATE_IS_NOT_NUMBER.getMessage());
         }
+    }
+
+    @Override
+    public List<String> readMenus() {
+        String input = inputReader.readLine();
+        return List.of(input.split(","));
     }
 }
