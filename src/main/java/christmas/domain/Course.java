@@ -4,5 +4,5 @@ enum Course {
     APPETIZER,
     MAIN,
     DESSERT,
-    DRINK
+    BEVERAGE
 }
