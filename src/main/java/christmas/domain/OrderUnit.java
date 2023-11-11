@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.dto.OrderDto;
+
 import java.util.Objects;
 
 class OrderUnit implements Pair<Meal, Integer> {
@@ -7,9 +9,9 @@ class OrderUnit implements Pair<Meal, Integer> {
     private final Meal menu;
     private final int num;
 
-    public OrderUnit(String menu, int num) {
-        this.menu = Meal.findByName(menu);
-        this.num = validateNum(num);
+    public OrderUnit(OrderDto orderDto) {
+        this.menu = Meal.findByName(orderDto.menuName());
+        this.num = validateNum(orderDto.menuNum());
     }
 
     private int validateNum(int num) {
