@@ -21,7 +21,8 @@ final class InputView implements InputPort {
 
     @Override
     public List<String> readMenus() {
+        String delimiter = ",";
         String input = inputReader.readLine();
-        return List.of(input.split(","));
+        return List.of(input.split(delimiter, -1));
     }
 }
