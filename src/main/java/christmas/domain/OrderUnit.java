@@ -19,6 +19,14 @@ class OrderUnit implements Pair<Meal, Integer> {
         return num;
     }
 
+    public int getNum() {
+        return num;
+    }
+
+    public Meal getMenu() {
+        return menu;
+    }
+
     @Override
     public String toString() {
         return menu + " " + num + "개";
