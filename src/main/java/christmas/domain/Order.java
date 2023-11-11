@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.dto.OrderDto;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Order {
 
@@ -13,11 +14,17 @@ class Order {
             order.add(new OrderUnit(orderDto.menuName(), orderDto.menuNum()));
         });
         validateDuplication(order);
+        validateOrderNum();
     }
 
     private void validateDuplication(List<OrderUnit> order) {
         if(order.size() != order.stream().distinct().count())
             throw new IllegalArgumentException(DomainException.MENU_IS_DUPLICATED.getMessage());
+    }
+
+    private void validateOrderNum() {
+        if(order.stream().mapToInt(OrderUnit::getNum).sum() > Constraint.MAX_ORDER_NUM.getValue())
+            throw new IllegalArgumentException(DomainException.MENU_NUM_EXCEEDS_20.getMessage());
     }
 
     @Override
