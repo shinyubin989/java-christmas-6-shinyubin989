@@ -15,6 +15,7 @@ class Order {
         });
         validateDuplication(order);
         validateOrderNum();
+        validateBeverageOnly();
     }
 
     private void validateDuplication(List<OrderUnit> order) {
@@ -25,6 +26,12 @@ class Order {
     private void validateOrderNum() {
         if(order.stream().mapToInt(OrderUnit::getNum).sum() > Constraint.MAX_ORDER_NUM.getValue())
             throw new IllegalArgumentException(DomainException.MENU_NUM_EXCEEDS_20.getMessage());
+    }
+
+    private void validateBeverageOnly() {
+        if (Course.doesOrderOnlyContainBeverage(order.stream().map(OrderUnit::getMenu).collect(Collectors.toList()))) {
+            throw new IllegalArgumentException(DomainException.ORDERS_ONLY_CONTAIN_BEVERAGE.getMessage());
+        }
     }
 
     @Override
