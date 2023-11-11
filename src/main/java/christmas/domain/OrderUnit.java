@@ -2,19 +2,14 @@ package christmas.domain;
 
 import java.util.Objects;
 
-class OrderUnit implements Pair<String, Integer> {
+class OrderUnit implements Pair<Meal, Integer> {
 
-    private final String menu;
+    private final Meal menu;
     private final int num;
 
     public OrderUnit(String menu, int num) {
-        validate();
-        this.menu = menu;
+        this.menu = Meal.findByName(menu);
         this.num = num;
-    }
-
-    private void validate() {
-
     }
 
     @Override
