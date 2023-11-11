@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.util.HashSet;
 import java.util.List;
 
 enum Course {
@@ -13,5 +14,9 @@ enum Course {
 
     Course(List<Meal> meals) {
         this.meals = meals;
+    }
+
+    static boolean doesOrderOnlyContainBeverage(List<Meal> order) {
+        return new HashSet<>(BEVERAGE.meals).containsAll(order);
     }
 }
