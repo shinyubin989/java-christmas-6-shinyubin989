@@ -16,6 +16,10 @@ class VisitDate {
         return date.getDayOfWeek().equals(DayOfWeek.FRIDAY) || date.getDayOfWeek().equals(DayOfWeek.SATURDAY);
     }
 
+    boolean isSpecificBenefitDay() {
+        return SpecificBenefitDays.isSpecificBenefitDays(date.getDayOfMonth());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
