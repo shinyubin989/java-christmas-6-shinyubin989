@@ -3,6 +3,7 @@ package christmas.io;
 import java.util.List;
 
 public interface OutputPort {
+    void printException(String message);
     void printIntroduction();
 
     void printInputDate();
