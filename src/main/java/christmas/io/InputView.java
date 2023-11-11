@@ -1,5 +1,8 @@
 package christmas.io;
 
+import christmas.dto.OrderDto;
+
+import java.util.ArrayList;
 import java.util.List;
 
 final class InputView implements InputPort {
@@ -20,9 +23,33 @@ final class InputView implements InputPort {
     }
 
     @Override
-    public List<String> readMenus() {
-        String delimiter = ",";
+    public List<OrderDto> readMenus() {
         String input = inputReader.readLine();
-        return List.of(input.split(delimiter, -1));
+
+        List<OrderDto> orders = new ArrayList<>();
+
+        splitInputByComma(input).forEach(order -> {
+            orders.add(toOrderDto(order));
+        });
+
+        return orders;
+    }
+
+    private List<String> splitInputByComma(String input) {
+        return List.of(input.split(",", -1));
+    }
+
+    private OrderDto toOrderDto(String order) {
+        List<String> splitOrder = List.of(order.split("-", -1));
+        if(splitOrder.size() != 2) throw new IllegalArgumentException(IoException.MENU_FORMAT_IS_INVALID.getMessage());
+        return new OrderDto(splitOrder.get(0), mapToInt(splitOrder.get(1)));
+    }
+
+    private int mapToInt(String num) {
+        try {
+            return Integer.parseInt(num);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(IoException.NUM_OF_ORDER_IS_NOT_NUMBER.getMessage());
+        }
     }
 }
