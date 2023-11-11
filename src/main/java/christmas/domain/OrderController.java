@@ -29,4 +29,15 @@ public final class OrderController {
         }
     }
 
+    Order receiveOrder() {
+        while (true) {
+            try {
+                List<OrderDto> orders = inputPort.readMenus();
+                return new Order(orders);
+            } catch (IllegalArgumentException e) {
+                outputPort.printException(e.getMessage());
+            }
+        }
+    }
+
 }
