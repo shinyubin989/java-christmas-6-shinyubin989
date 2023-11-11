@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 enum Meal {
 
     MUSHROOM_SOUP("양송이수프", 6000),
@@ -26,5 +28,12 @@ enum Meal {
     Meal(String name, int price) {
         this.name = name;
         this.price = price;
+    }
+
+    static Meal findByName(String name) {
+        return Arrays.stream(values())
+                .filter(it -> it.name.equals(name))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(DomainException.MENU_DOES_NOT_EXIST.getMessage()));
     }
 }
