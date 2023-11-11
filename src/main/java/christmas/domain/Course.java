@@ -19,4 +19,8 @@ enum Course {
     static boolean doesOrderOnlyContainBeverage(List<Meal> order) {
         return new HashSet<>(BEVERAGE.meals).containsAll(order);
     }
+
+    static boolean isDessertMenu(Meal meal) {
+        return DESSERT.meals.contains(meal);
+    }
 }
