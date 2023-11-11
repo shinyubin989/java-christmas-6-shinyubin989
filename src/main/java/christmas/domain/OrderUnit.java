@@ -9,7 +9,12 @@ class OrderUnit implements Pair<Meal, Integer> {
 
     public OrderUnit(String menu, int num) {
         this.menu = Meal.findByName(menu);
-        this.num = num;
+        this.num = validateNum(num);
+    }
+
+    private int validateNum(int num) {
+        if(num < 1) throw new IllegalArgumentException(DomainException.MENU_NUM_MUST_BE_AT_LEAST_ONE.getMessage());
+        return num;
     }
 
     @Override
