@@ -7,6 +7,7 @@ enum DomainException {
     MENU_IS_DUPLICATED(ERROR.message + "유효하지 않은 주문입니다. 다시 입력해 주세요."),
     INVALID_DATE(ERROR.message + "유효하지 않은 날짜입니다. 다시 입력해 주세요."),
     MENU_NUM_EXCEEDS_20(ERROR.message + "총 메뉴의 갯수가 20개를 초과합니다. 다시 입력해 주세요."),
+    ORDERS_ONLY_CONTAIN_BEVERAGE(ERROR.message + "음료만 주문 시, 주문할 수 없습니다. 다시 입력해 주세요."),
 
     ;
     private final String message;
