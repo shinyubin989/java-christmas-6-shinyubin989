@@ -9,9 +9,9 @@ class OrderUnit implements Pair<Meal, Integer> {
     private final Meal menu;
     private final int num;
 
-    public OrderUnit(OrderDto orderDto) {
-        this.menu = Meal.findByName(orderDto.menuName());
-        this.num = validateNum(orderDto.menuNum());
+    public OrderUnit(String name, int num) {
+        this.menu = Meal.findByName(name);
+        this.num = validateNum(num);
     }
 
     private int validateNum(int num) {

@@ -1,12 +1,17 @@
 package christmas.domain;
 
+import christmas.dto.OrderDto;
+
 import java.util.*;
 
 class Order {
 
     private final List<OrderUnit> order = new ArrayList<>();
 
-    public Order(List<OrderUnit> order) {
+    public Order(List<OrderDto> inputOrders) {
+        inputOrders.forEach(orderDto -> {
+            order.add(new OrderUnit(orderDto.menuName(), orderDto.menuNum()));
+        });
         validateDuplication(order);
     }
 
