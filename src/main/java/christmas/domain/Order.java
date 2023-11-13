@@ -46,6 +46,12 @@ public class Order {
         return (int) order.stream().filter(OrderUnit::isMainMenu).count();
     }
 
+    public Map<String, Integer> getOrderDetails() {
+        Map<String, Integer> orders = new HashMap<>();
+        order.forEach(it -> orders.put(it.getMenuName(), it.getNum()));
+        return orders;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

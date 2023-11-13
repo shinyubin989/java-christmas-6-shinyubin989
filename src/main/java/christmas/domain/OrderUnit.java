@@ -33,6 +33,10 @@ class OrderUnit implements Pair<Meal, Integer> {
         return menu;
     }
 
+    String getMenuName() {
+        return menu.getName();
+    }
+
     int getPrice() {
         return menu.getPrice();
     }

@@ -37,6 +37,10 @@ public enum Meal {
                 .orElseThrow(() -> new IllegalArgumentException(DomainException.MENU_DOES_NOT_EXIST.getMessage()));
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getPrice() {
         return price;
     }
