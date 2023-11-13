@@ -8,7 +8,7 @@ import christmas.domain.VisitDate;
 final class GiveawayBenefitCalculator implements BenefitCalculator{
     @Override
     public int calculate(Order order, VisitDate date) {
-        if (Constants.PRICE_CORRESPONDING_TO_GIVEAWAY.getValue() <= order.getPriceSum()) {
+        if (Constants.PRICE_CORRESPONDING_TO_GIVEAWAY.getValue() <= order.sumOfAllOrders()) {
             return Meal.CHAMPAGNE.getPrice();
         }
         return 0;

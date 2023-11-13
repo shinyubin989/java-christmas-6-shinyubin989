@@ -7,7 +7,7 @@ import java.util.Map;
 final class PosMachine {
 
     Receipt printReceipt(VisitDate date, Order order) {
-        int totalPrice = order.getPriceSum();
+        int totalPrice = order.sumOfAllOrders();
         Map<Benefits, Integer> allBenefits = Benefits.allBenefits(order, date);
         Giveaway giveaway = new Giveaway(totalPrice);
         int priceAfterBenefits = totalPrice - sumOfRealBenefits(order, date);
