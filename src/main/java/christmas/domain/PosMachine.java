@@ -4,9 +4,9 @@ import christmas.domain.benefit.Benefits;
 
 import java.util.Map;
 
-final class PosMachine {
+public final class PosMachine {
 
-    Receipt printReceipt(VisitDate date, Order order) {
+    public Receipt printReceipt(VisitDate date, Order order) {
         int totalPrice = order.sumOfAllOrders();
         Map<Benefits, Integer> allBenefits = Benefits.allBenefits(order, date);
         Giveaway giveaway = new Giveaway(totalPrice);
