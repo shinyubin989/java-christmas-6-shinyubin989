@@ -16,6 +16,13 @@ final class BenefitCalculator {
         return 0;
     }
 
+    int calculateWeekdayBenefit(Order order, VisitDate date) {
+        if (!date.isWeekend()) {
+            return order.countDessertMenuNum() * Constant.WEEKDAY_BENEFIT_PRICE.price;
+        }
+        return 0;
+    }
+
     enum Constant{
         BENEFIT_START_PRICE(1000),
         DAILY_INCREASE_PRICE(100),
