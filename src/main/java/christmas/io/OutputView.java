@@ -13,4 +13,10 @@ final class OutputView implements OutputPort{
     public void printIntroduction() {
         System.out.println(OutputMessage.INTRODUCTION.getMessage());
     }
+
+    @Override
+    public void printInputDate() {
+        System.out.println(OutputMessage.INPUT_DATE.getMessage());
+    }
+
 }
