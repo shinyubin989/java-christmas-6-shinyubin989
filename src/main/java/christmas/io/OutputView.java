@@ -8,4 +8,9 @@ final class OutputView implements OutputPort{
     public void printException(String message) {
         System.out.println(message);
     }
+
+    @Override
+    public void printIntroduction() {
+        System.out.println(OutputMessage.INTRODUCTION.getMessage());
+    }
 }
