@@ -1,6 +1,7 @@
 package christmas.io;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OutputPort {
     void printException(String message);
@@ -12,13 +13,13 @@ public interface OutputPort {
 
     void printBenefitPreview();
 
-    void printOrderedMenu(List<String> menus);
+    void printOrderedMenu(Map<String, Integer> menus);
 
     void printPriceBeforeBenefit(int price);
 
-    void printGiveawayMenu(String menu);
+    void printGiveawayMenu(Map<String, Integer> menu);
 
-    void printBenefitList(List<String> list);
+    void printBenefitList(Map<String, Integer> list);
 
     void printBenefitPrice(int price);
 
