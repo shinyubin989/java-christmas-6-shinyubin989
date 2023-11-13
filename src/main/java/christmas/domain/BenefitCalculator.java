@@ -30,6 +30,11 @@ final class BenefitCalculator {
         return 0;
     }
 
+    int calculateSpecialBenefit(Order order, VisitDate date) {
+        if(date.isSpecificBenefitDay()) return Constant.SPECIAL_DAY_BENEFIT_PRICE.price;
+        return 0;
+    }
+
     enum Constant{
         BENEFIT_START_PRICE(1000),
         DAILY_INCREASE_PRICE(100),
