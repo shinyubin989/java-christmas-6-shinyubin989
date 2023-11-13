@@ -56,6 +56,10 @@ final class BenefitCalculator {
                 + calculateGiveawayBenefit(order);
     }
 
+    String calculateBadge(int benefitPrice) {
+        return Badge.findBadgeByBenefitPrice(benefitPrice);
+    }
+
     enum Constant{
         BENEFIT_START_PRICE(1000),
         DAILY_INCREASE_PRICE(100),
