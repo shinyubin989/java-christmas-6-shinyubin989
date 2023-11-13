@@ -19,4 +19,9 @@ final class OutputView implements OutputPort{
         System.out.println(OutputMessage.INPUT_DATE.getMessage());
     }
 
+    @Override
+    public void printInputMenu() {
+        System.out.println(OutputMessage.INPUT_MENU.getMessage());
+    }
+
 }
