@@ -57,4 +57,14 @@ final class OutputView implements OutputPort{
         System.out.println();
     }
 
+    @Override
+    public void printBenefitList(Map<String, Integer> benefits) {
+        System.out.println(OutputMessage.BENEFIT_LIST.getMessage());
+        benefits.forEach((benefit, price) -> {
+            String formattedBenefit = String.format("%s: -%,d원", benefit, price);
+            System.out.println(formattedBenefit);
+        });
+        System.out.println();
+    }
+
 }
