@@ -2,7 +2,7 @@ package christmas.domain;
 
 import java.util.Arrays;
 
-enum Meal {
+public enum Meal {
 
     MUSHROOM_SOUP("양송이수프", 6000),
     TAPAS("타파스", 5500),
@@ -37,7 +37,7 @@ enum Meal {
                 .orElseThrow(() -> new IllegalArgumentException(DomainException.MENU_DOES_NOT_EXIST.getMessage()));
     }
 
-    int getPrice() {
+    public int getPrice() {
         return price;
     }
 }

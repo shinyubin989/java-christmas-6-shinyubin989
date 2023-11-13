@@ -34,7 +34,7 @@ public class Order {
         }
     }
 
-    int getPriceSum() {
+    public int getPriceSum() {
         return order.stream().mapToInt(OrderUnit::getPrice).sum();
     }
 
