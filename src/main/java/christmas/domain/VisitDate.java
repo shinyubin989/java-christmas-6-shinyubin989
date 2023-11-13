@@ -12,11 +12,11 @@ public class VisitDate {
         this.date = LocalDate.of(2023, 12, day);
     }
 
-    boolean isWeekend() {
+    public boolean isWeekend() {
         return date.getDayOfWeek().equals(DayOfWeek.FRIDAY) || date.getDayOfWeek().equals(DayOfWeek.SATURDAY);
     }
 
-    boolean isSpecificBenefitDay() {
+    public boolean isSpecificBenefitDay() {
         return SpecificBenefitDays.isSpecificBenefitDays(date.getDayOfMonth());
     }
 
