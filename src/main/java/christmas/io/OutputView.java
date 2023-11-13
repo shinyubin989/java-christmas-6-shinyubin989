@@ -3,7 +3,7 @@ package christmas.io;
 import java.text.DecimalFormat;
 import java.util.Map;
 
-final class OutputView implements OutputPort{
+public final class OutputView implements OutputPort {
     @Override
     public void printException(String message) {
         System.out.println(message);
@@ -25,8 +25,8 @@ final class OutputView implements OutputPort{
     }
 
     @Override
-    public void printBenefitPreview() {
-        System.out.println(OutputMessage.PREVIEW_BENEFIT.getMessage());
+    public void printBenefitPreview(int date) {
+        System.out.println(String.format(OutputMessage.PREVIEW_BENEFIT.getMessage(), date));
         System.out.println();
     }
 
@@ -50,6 +50,11 @@ final class OutputView implements OutputPort{
     @Override
     public void printGiveawayMenu(Map<String, Integer> giveaways) {
         System.out.println(OutputMessage.GIVEAWAY_MENU.getMessage());
+        if (giveaways.isEmpty()) {
+            System.out.println("없음");
+            System.out.println();
+            return;
+        }
         giveaways.forEach((menu, num) -> {
             String formattedMenu = String.format("%s %d개", menu, num);
             System.out.println(formattedMenu);
@@ -61,8 +66,10 @@ final class OutputView implements OutputPort{
     public void printBenefitList(Map<String, Integer> benefits) {
         System.out.println(OutputMessage.BENEFIT_LIST.getMessage());
         benefits.forEach((benefit, price) -> {
-            String formattedBenefit = String.format("%s: -%,d원", benefit, price);
-            System.out.println(formattedBenefit);
+            if(price > 0) {
+                String formattedBenefit = String.format("%s: -%,d원", benefit, price);
+                System.out.println(formattedBenefit);
+            }
         });
         System.out.println();
     }
@@ -70,6 +77,11 @@ final class OutputView implements OutputPort{
     @Override
     public void printBenefitPrice(int price) {
         System.out.println(OutputMessage.BENEFIT_PRICE.getMessage());
+        if(price == 0) {
+            System.out.println("0원");
+            System.out.println();
+            return;
+        }
         System.out.println(String.format("-%,d원", price));
         System.out.println();
     }

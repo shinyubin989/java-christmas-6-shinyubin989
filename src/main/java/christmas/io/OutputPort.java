@@ -11,7 +11,7 @@ public interface OutputPort {
 
     void printInputMenu();
 
-    void printBenefitPreview();
+    void printBenefitPreview(int date);
 
     void printOrderedMenu(Map<String, Integer> menus);
 
