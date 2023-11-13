@@ -39,11 +39,17 @@ public class Order {
     }
 
     public int countDessertMenuNum() {
-        return (int) order.stream().filter(OrderUnit::isDessertMenu).count();
+        return order.stream()
+                .filter(OrderUnit::isDessertMenu)
+                .mapToInt(OrderUnit::getNum)
+                .sum();
     }
 
     public int countMainMenuNum() {
-        return (int) order.stream().filter(OrderUnit::isMainMenu).count();
+        return order.stream()
+                .filter(OrderUnit::isMainMenu)
+                .mapToInt(OrderUnit::getNum)
+                .sum();
     }
 
     public Map<String, Integer> getOrderDetails() {
