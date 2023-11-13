@@ -12,7 +12,7 @@ final class PosMachine {
         Giveaway giveaway = new Giveaway(totalPrice);
         int priceAfterBenefits = totalPrice - sumOfRealBenefits(order, date);
 
-        return new Receipt(totalPrice, giveaway, allBenefits, priceAfterBenefits, chooseBadge(totalPrice));
+        return new Receipt(order, totalPrice, giveaway, allBenefits, priceAfterBenefits, chooseBadge(totalPrice));
     }
 
     private int sumOfRealBenefits(Order order, VisitDate date) {
