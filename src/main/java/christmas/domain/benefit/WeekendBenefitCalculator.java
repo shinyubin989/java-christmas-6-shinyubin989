@@ -4,7 +4,7 @@ import christmas.domain.Constants;
 import christmas.domain.Order;
 import christmas.domain.VisitDate;
 
-final class WeekendBenefitCalculator implements BenefitCalculator{
+public final class WeekendBenefitCalculator implements BenefitCalculator{
     @Override
     public int calculate(Order order, VisitDate date) {
         if (date.isWeekend()) {
