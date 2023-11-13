@@ -67,4 +67,11 @@ final class OutputView implements OutputPort{
         System.out.println();
     }
 
+    @Override
+    public void printBenefitPrice(int price) {
+        System.out.println(OutputMessage.BENEFIT_PRICE.getMessage());
+        System.out.println(String.format("-%,d원", price));
+        System.out.println();
+    }
+
 }
