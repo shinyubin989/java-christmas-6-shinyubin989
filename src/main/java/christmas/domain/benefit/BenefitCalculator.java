@@ -1,4 +1,7 @@
-package christmas.domain;
+package christmas.domain.benefit;
+
+import christmas.domain.Order;
+import christmas.domain.VisitDate;
 
 @FunctionalInterface
 public interface BenefitCalculator {
