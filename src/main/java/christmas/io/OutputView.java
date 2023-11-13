@@ -65,6 +65,11 @@ public final class OutputView implements OutputPort {
     @Override
     public void printBenefitList(Map<String, Integer> benefits) {
         System.out.println(OutputMessage.BENEFIT_LIST.getMessage());
+        if (isBenefitZero(benefits)) {
+            System.out.println("없음");
+            System.out.println();
+            return;
+        }
         benefits.forEach((benefit, price) -> {
             if(price > 0) {
                 String formattedBenefit = String.format("%s: -%,d원", benefit, price);
@@ -72,6 +77,10 @@ public final class OutputView implements OutputPort {
             }
         });
         System.out.println();
+    }
+
+    private boolean isBenefitZero(Map<String, Integer> benefits) {
+        return benefits.values().stream().mapToInt(Integer::intValue).sum() == 0;
     }
 
     @Override
@@ -95,6 +104,7 @@ public final class OutputView implements OutputPort {
 
     @Override
     public void printEventBadge(String badge) {
+        System.out.println(OutputMessage.EVENT_BADGE.getMessage());
         System.out.println(badge);
     }
 }
