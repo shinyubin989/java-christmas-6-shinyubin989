@@ -30,4 +30,14 @@ final class OutputView implements OutputPort{
         System.out.println();
     }
 
+    @Override
+    public void printOrderedMenu(Map<String, Integer> menus) {
+        System.out.println(OutputMessage.ORDER_MENU.getMessage());
+        menus.forEach((menu, num) -> {
+            String formattedMenu = String.format("%s %d개", menu, num);
+            System.out.println(formattedMenu);
+        });
+        System.out.println();
+    }
+
 }
