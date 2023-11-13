@@ -74,4 +74,11 @@ final class OutputView implements OutputPort{
         System.out.println();
     }
 
+    @Override
+    public void printPriceAfterBenefit(int price) {
+        System.out.println(OutputMessage.PRICE_AFTER_BENEFIT.getMessage());
+        System.out.println(new DecimalFormat("###,###").format(price) + "원");
+        System.out.println();
+    }
+
 }
