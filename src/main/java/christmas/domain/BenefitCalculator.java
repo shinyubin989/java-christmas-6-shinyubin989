@@ -42,6 +42,14 @@ final class BenefitCalculator {
         return 0;
     }
 
+    int calculateAllMaxBenefit(Order order, VisitDate date) {
+        return calculateChristmasDDayBenefit(date)
+                + calculateWeekdayBenefit(order, date)
+                + calculateWeekendBenefit(order, date)
+                + calculateSpecialBenefit(order, date)
+                + calculateGiveawayBenefit(order);
+    }
+
     enum Constant{
         BENEFIT_START_PRICE(1000),
         DAILY_INCREASE_PRICE(100),
