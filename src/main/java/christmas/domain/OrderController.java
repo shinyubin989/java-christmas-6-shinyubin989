@@ -15,12 +15,14 @@ public final class OrderController {
     private final InputPort inputPort;
     private final OutputPort outputPort;
 
-    OrderController(InputPort inputPort, OutputPort outputPort) {
+    public OrderController(InputPort inputPort, OutputPort outputPort) {
         this.inputPort = inputPort;
         this.outputPort = outputPort;
     }
 
-    VisitDate receiveDate() {
+    public VisitDate receiveDate() {
+        outputPort.printIntroduction();
+        outputPort.printInputDate();
         while (true) {
             try {
                 return new VisitDate(inputPort.readDate());
@@ -32,7 +34,8 @@ public final class OrderController {
         }
     }
 
-    Order receiveOrder() {
+    public Order receiveOrder() {
+        outputPort.printInputMenu();
         while (true) {
             try {
                 List<OrderDto> orders = inputPort.readMenus();
@@ -43,7 +46,8 @@ public final class OrderController {
         }
     }
 
-    void showReceipt(Receipt receipt) {
+    public void showReceipt(VisitDate date, Receipt receipt) {
+        outputPort.printBenefitPreview(date.dayOfMonth());
         outputPort.printOrderedMenu(receipt.order().getOrderDetails());
         outputPort.printPriceBeforeBenefit(receipt.priceBeforeBenefit());
         outputPort.printGiveawayMenu(convertGiveaways(receipt.giveaway()));
