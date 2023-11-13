@@ -35,7 +35,7 @@ public class Order {
     }
 
     public int sumOfAllOrders() {
-        return order.stream().mapToInt(OrderUnit::getPrice).sum();
+        return order.stream().mapToInt(it -> it.getPrice() * it.getNum()).sum();
     }
 
     public int countDessertMenuNum() {
