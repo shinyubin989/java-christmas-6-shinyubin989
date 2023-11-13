@@ -1,27 +1,29 @@
 package christmas.domain;
 
+import christmas.domain.benefit.Benefits;
+
+import java.util.Map;
+
 final class PosMachine {
 
-    private final Calculator calculator;
+    Receipt printReceipt(VisitDate date, Order order) {
+        int totalPrice = order.getPriceSum();
+        Map<Benefits, Integer> allBenefits = Benefits.allBenefits(order, date);
+        Giveaway giveaway = new Giveaway(totalPrice);
+        int priceAfterBenefits = totalPrice - sumOfRealBenefits(order, date);
 
-    public PosMachine(Calculator calculator) {
-        this.calculator = calculator;
+        return new Receipt(order, totalPrice, giveaway, allBenefits,
+                priceAfterBenefits, chooseBadge(totalPrice));
     }
 
-    Receipt printReceipt(VisitDate date, Order order) {
-        int priceBeforeBenefit = calculator.calculatePriceBeforeBenefit(order);
-        return new Receipt(
-                order,
-                priceBeforeBenefit,
-                new Giveaway(priceBeforeBenefit),
-                calculator.calculateChristmasDDayBenefit(date),
-                calculator.calculateWeekdayBenefit(order, date),
-                calculator.calculateWeekendBenefit(order, date),
-                calculator.calculateSpecialBenefit(order, date),
-                calculator.calculateGiveawayBenefit(order),
-                calculator.calculateAllMaxBenefit(order, date),
-                calculator.calculatePriceAfterBenefit(order, date),
-                calculator.calculateBadge(calculator.calculateAllMaxBenefit(order, date))
-        );
+    private int sumOfRealBenefits(Order order, VisitDate date) {
+        Map<Benefits, Integer> realBenefits = Benefits.realBenefits(order, date);
+        return realBenefits.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+    private String chooseBadge(int benefitPrice) {
+        return Badge.findBadgeByBenefitPrice(benefitPrice);
     }
 }

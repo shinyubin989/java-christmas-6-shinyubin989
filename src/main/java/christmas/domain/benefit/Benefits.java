@@ -22,7 +22,7 @@ public enum Benefits {
         this.benefitCalculator = benefitCalculator;
     }
 
-    static Map<Benefits, Integer> allBenefits(Order order, VisitDate date) {
+    public static Map<Benefits, Integer> allBenefits(Order order, VisitDate date) {
         return Map.ofEntries(
                 Map.entry(CHRISTMAS_D_DAY, CHRISTMAS_D_DAY.benefitCalculator.calculate(order, date)),
                 Map.entry(WEEKDAY, WEEKDAY.benefitCalculator.calculate(order, date)),
@@ -32,7 +32,7 @@ public enum Benefits {
         );
     }
 
-    static Map<Benefits, Integer> realBenefits(Order order, VisitDate date) {
+    public static Map<Benefits, Integer> realBenefits(Order order, VisitDate date) {
         return Map.ofEntries(
                 Map.entry(CHRISTMAS_D_DAY, CHRISTMAS_D_DAY.benefitCalculator.calculate(order, date)),
                 Map.entry(WEEKDAY, WEEKDAY.benefitCalculator.calculate(order, date)),
