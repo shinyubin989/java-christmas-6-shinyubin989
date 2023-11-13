@@ -6,6 +6,16 @@ final class BenefitCalculator {
         return order.getPriceSum();
     }
 
+    int calculateChristmasDDayBenefit(VisitDate date) {
+        int leftDays = date.daysLeftUntilChristmas();
+        if (leftDays >= 0) {
+            return Constant.BENEFIT_START_PRICE.price
+                    + Constant.DAILY_INCREASE_PRICE.price
+                    * (Constraint.CHRISTMAS_DATE.getValue() - leftDays);
+        }
+        return 0;
+    }
+
     enum Constant{
         BENEFIT_START_PRICE(1000),
         DAILY_INCREASE_PRICE(100),
