@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Objects;
 
-class VisitDate {
+public class VisitDate {
 
     private final LocalDate date;
 

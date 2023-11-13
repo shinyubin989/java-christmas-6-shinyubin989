@@ -5,7 +5,7 @@ import christmas.dto.OrderDto;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class Order {
+public class Order {
 
     private final List<OrderUnit> order = new ArrayList<>();
 
