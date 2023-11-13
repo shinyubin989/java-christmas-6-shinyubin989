@@ -5,7 +5,7 @@ final class Giveaway {
     private GiveawayMenus giveaway = GiveawayMenus.NONE;
 
     Giveaway(int priceBeforeBenefit) {
-        if (Constraint.PRICE_CORRESPONDING_TO_GIVEAWAY.getValue() <= priceBeforeBenefit) {
+        if (Constants.PRICE_CORRESPONDING_TO_GIVEAWAY.getValue() <= priceBeforeBenefit) {
             giveaway = GiveawayMenus.CHAMPAGNE;
         }
     }

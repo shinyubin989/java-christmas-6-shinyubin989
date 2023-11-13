@@ -9,34 +9,34 @@ final class Calculator {
     int calculateChristmasDDayBenefit(VisitDate date) {
         int leftDays = date.daysLeftUntilChristmas();
         if (leftDays >= 0) {
-            return Constant.BENEFIT_START_PRICE.price
-                    + Constant.DAILY_INCREASE_PRICE.price
-                    * (Constraint.CHRISTMAS_DATE.getValue() - leftDays);
+            return Constants.BENEFIT_START_PRICE.getValue()
+                    + Constants.DAILY_INCREASE_PRICE.getValue()
+                    * (Constants.CHRISTMAS_DATE.getValue() - leftDays);
         }
         return 0;
     }
 
     int calculateWeekdayBenefit(Order order, VisitDate date) {
         if (!date.isWeekend()) {
-            return order.countDessertMenuNum() * Constant.WEEKDAY_BENEFIT_PRICE.price;
+            return order.countDessertMenuNum() * Constants.WEEKDAY_BENEFIT_PRICE.getValue();
         }
         return 0;
     }
 
     int calculateWeekendBenefit(Order order, VisitDate date) {
         if (date.isWeekend()) {
-            return order.countMainMenuNum() * Constant.WEEKEND_BENEFIT_PRICE.price;
+            return order.countMainMenuNum() * Constants.WEEKEND_BENEFIT_PRICE.getValue();
         }
         return 0;
     }
 
     int calculateSpecialBenefit(Order order, VisitDate date) {
-        if(date.isSpecificBenefitDay()) return Constant.SPECIAL_DAY_BENEFIT_PRICE.price;
+        if(date.isSpecificBenefitDay()) return Constants.SPECIAL_DAY_BENEFIT_PRICE.getValue();
         return 0;
     }
 
     int calculateGiveawayBenefit(Order order) {
-        if (Constraint.PRICE_CORRESPONDING_TO_GIVEAWAY.getValue() <= order.getPriceSum()) {
+        if (Constants.PRICE_CORRESPONDING_TO_GIVEAWAY.getValue() <= order.getPriceSum()) {
             return Meal.CHAMPAGNE.getPrice();
         }
         return 0;
@@ -58,20 +58,5 @@ final class Calculator {
 
     String calculateBadge(int benefitPrice) {
         return Badge.findBadgeByBenefitPrice(benefitPrice);
-    }
-
-    enum Constant{
-        BENEFIT_START_PRICE(1000),
-        DAILY_INCREASE_PRICE(100),
-        WEEKDAY_BENEFIT_PRICE(2023),
-        WEEKEND_BENEFIT_PRICE(2023),
-        SPECIAL_DAY_BENEFIT_PRICE(1000),
-        ;
-
-        private final int price;
-
-        Constant(int price) {
-            this.price = price;
-        }
     }
 }

@@ -24,7 +24,7 @@ public class Order {
     }
 
     private void validateOrderNum() {
-        if(order.stream().mapToInt(OrderUnit::getNum).sum() > Constraint.MAX_ORDER_NUM.getValue())
+        if(order.stream().mapToInt(OrderUnit::getNum).sum() > Constants.MAX_ORDER_NUM.getValue())
             throw new IllegalArgumentException(DomainException.MENU_NUM_EXCEEDS_20.getMessage());
     }
 
