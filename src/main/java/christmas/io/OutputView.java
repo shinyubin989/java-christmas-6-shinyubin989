@@ -24,4 +24,10 @@ final class OutputView implements OutputPort{
         System.out.println(OutputMessage.INPUT_MENU.getMessage());
     }
 
+    @Override
+    public void printBenefitPreview() {
+        System.out.println(OutputMessage.PREVIEW_BENEFIT.getMessage());
+        System.out.println();
+    }
+
 }
