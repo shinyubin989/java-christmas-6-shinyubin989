@@ -47,4 +47,14 @@ final class OutputView implements OutputPort{
         System.out.println();
     }
 
+    @Override
+    public void printGiveawayMenu(Map<String, Integer> giveaways) {
+        System.out.println(OutputMessage.GIVEAWAY_MENU.getMessage());
+        giveaways.forEach((menu, num) -> {
+            String formattedMenu = String.format("%s %d개", menu, num);
+            System.out.println(formattedMenu);
+        });
+        System.out.println();
+    }
+
 }
