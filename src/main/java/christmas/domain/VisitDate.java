@@ -24,6 +24,10 @@ public class VisitDate {
         return Constants.CHRISTMAS_DATE.getValue() - date.getDayOfMonth();
     }
 
+    public int dayOfMonth() {
+        return date.getDayOfMonth();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
