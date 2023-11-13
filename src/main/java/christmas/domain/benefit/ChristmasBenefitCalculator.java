@@ -11,7 +11,7 @@ final class ChristmasBenefitCalculator implements BenefitCalculator{
         if (leftDays >= 0) {
             return Constants.BENEFIT_START_PRICE.getValue()
                     + Constants.DAILY_INCREASE_PRICE.getValue()
-                    * (Constants.CHRISTMAS_DATE.getValue() - leftDays);
+                    * (Constants.CHRISTMAS_DATE.getValue() - leftDays - 1);
         }
         return 0;
     }
