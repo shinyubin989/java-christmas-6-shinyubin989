@@ -4,6 +4,6 @@ import christmas.domain.Order;
 import christmas.domain.VisitDate;
 
 @FunctionalInterface
-public interface BenefitCalculator {
+interface BenefitCalculator {
     int calculate(Order order, VisitDate date);
 }

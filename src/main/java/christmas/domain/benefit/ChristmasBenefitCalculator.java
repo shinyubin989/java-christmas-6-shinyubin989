@@ -4,7 +4,7 @@ import christmas.domain.Constants;
 import christmas.domain.Order;
 import christmas.domain.VisitDate;
 
-public final class ChristmasBenefitCalculator implements BenefitCalculator{
+final class ChristmasBenefitCalculator implements BenefitCalculator{
     @Override
     public int calculate(Order order, VisitDate date) {
         int leftDays = date.daysLeftUntilChristmas();
