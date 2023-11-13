@@ -20,6 +20,10 @@ class VisitDate {
         return SpecificBenefitDays.isSpecificBenefitDays(date.getDayOfMonth());
     }
 
+    int daysLeftUntilChristmas() {
+        return Constraint.CHRISTMAS_DATE.getValue() - date.getDayOfMonth();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
