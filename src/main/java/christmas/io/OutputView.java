@@ -81,4 +81,8 @@ final class OutputView implements OutputPort{
         System.out.println();
     }
 
+    @Override
+    public void printEventBadge(String badge) {
+        System.out.println(badge);
+    }
 }
