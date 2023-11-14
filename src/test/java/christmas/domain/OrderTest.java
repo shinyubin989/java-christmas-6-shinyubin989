@@ -3,7 +3,6 @@ package christmas.domain;
 import christmas.dto.OrderDto;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
