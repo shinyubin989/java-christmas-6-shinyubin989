@@ -13,4 +13,11 @@ class BadgeTest {
         assertEquals(Badge.NONE.getBadgeName(), actual);
     }
 
+    @Test
+    void 혜택금액이_오천원_이상일_경우_배지를_반환하지_않는다() {
+        String actual = Badge.findBadgeByBenefitPrice(9999);
+
+        assertEquals(Badge.STAR.getBadgeName(), actual);
+    }
+
 }
