@@ -18,7 +18,7 @@ class BenefitsTest {
     @ParameterizedTest
     @CsvSource(value = {"1,1000", "10,1900", "24,3300", "25,3400"}, delimiter = ',')
     void 크리스마스_디데이에_맞는_혜택을_반환한다(int date, int expected) {
-        Order order = new Order(List.of(new OrderDto("양송이수프", 1)));
+        Order order = new Order(List.of(new OrderDto("양송이수프", 2)));
         VisitDate visitDate = new VisitDate(date);
 
         Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
@@ -46,6 +46,17 @@ class BenefitsTest {
         Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
 
         assertEquals(expected, benefits.get(Benefits.WEEKEND));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3,1000", "17,1000", "25,1000", "31,1000", "30,0"}, delimiter = ',')
+    void 특별할인에_맞는_혜택을_반환한다(int date, int expected) {
+        Order order = new Order(List.of(new OrderDto("양송이수프", 10)));
+        VisitDate visitDate = new VisitDate(date);
+
+        Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
+
+        assertEquals(expected, benefits.get(Benefits.SPECIAL));
     }
 
 }
