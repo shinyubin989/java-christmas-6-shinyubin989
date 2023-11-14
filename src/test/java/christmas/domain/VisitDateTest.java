@@ -45,4 +45,12 @@ class VisitDateTest {
     void 특별_혜택_날인_경우_true를_반환한다(int date) {
         assertTrue(() -> new VisitDate(date).isSpecificBenefitDay());
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 4, 5, 6, 7, 8, 9, 11, 12, 13,
+            14, 15, 16, 18, 19, 20, 21, 22, 23, 26, 27,
+            28, 29, 30})
+    void 특별_혜택_날이_아닌_경우_false를_반환한다(int date) {
+        assertFalse(() -> new VisitDate(date).isSpecificBenefitDay());
+    }
 }
