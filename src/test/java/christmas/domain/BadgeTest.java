@@ -27,4 +27,11 @@ class BadgeTest {
         assertEquals(Badge.TREE.getBadgeName(), actual);
     }
 
+    @Test
+    void 혜택금액이_이만원_이상일_경우_산타_배지를_반환한다() {
+        String actual = Badge.findBadgeByBenefitPrice(20001);
+
+        assertEquals(Badge.SANTA.getBadgeName(), actual);
+    }
+
 }
