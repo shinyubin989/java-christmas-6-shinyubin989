@@ -44,4 +44,13 @@ class OrderTest {
 
         assertEquals(expected, order.sumOfAllOrders());
     }
+
+    @Test
+    void 디저트_메뉴의_갯수를_센다() {
+        Order order = new Order(List.of(new OrderDto("제로콜라", 5), new OrderDto("양송이수프", 10), new OrderDto("초코케이크", 5)));
+
+        int expected = 5;
+
+        assertEquals(expected, order.countDessertMenuNum());
+    }
 }
