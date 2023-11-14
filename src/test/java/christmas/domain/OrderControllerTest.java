@@ -38,4 +38,15 @@ class OrderControllerTest {
         assertDoesNotThrow(() -> orderController.showReceipt(visitDate, receipt));
     }
 
+    @Test
+    void 혜택_내역이_없는_영수증_출력_과정에서_예외가_발생하지_않는다() {
+        PosMachine posMachine = new PosMachine();
+        OrderController orderController = new OrderController(new InputView(() -> "양송이수프-1"), new OutputView());
+        VisitDate visitDate = new VisitDate(3);
+        Order order = new Order(List.of(new OrderDto("양송이수프", 1)));
+        Receipt receipt = posMachine.printReceipt(visitDate, order);
+
+        assertDoesNotThrow(() -> orderController.showReceipt(visitDate, receipt));
+    }
+
 }
