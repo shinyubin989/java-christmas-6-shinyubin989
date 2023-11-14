@@ -2,7 +2,7 @@ package christmas.domain;
 
 import java.util.Objects;
 
-class OrderUnit implements Pair<Meal, Integer> {
+class OrderUnit {
 
     private final Meal menu;
     private final int num;
@@ -39,11 +39,6 @@ class OrderUnit implements Pair<Meal, Integer> {
 
     int getPrice() {
         return menu.getPrice();
-    }
-
-    @Override
-    public String toString() {
-        return menu + " " + num + "개";
     }
 
     @Override
