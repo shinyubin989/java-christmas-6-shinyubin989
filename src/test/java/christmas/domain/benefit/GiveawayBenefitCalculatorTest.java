@@ -22,4 +22,14 @@ class GiveawayBenefitCalculatorTest {
         assertEquals(Meal.CHAMPAGNE.getPrice(), actual);
     }
 
+    @Test
+    void 증정이벤트_혜택_적용_대상이_아닌_경우_할인_금액을_반환한다() {
+        Order order = new Order(List.of(new OrderDto("양송이수프", 19)));
+        VisitDate visitDate = new VisitDate(31);
+
+        int actual = new GiveawayBenefitCalculator().calculate(order, visitDate);
+
+        assertEquals(0, actual);
+    }
+
 }
