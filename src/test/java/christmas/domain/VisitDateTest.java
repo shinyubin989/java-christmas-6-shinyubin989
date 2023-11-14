@@ -1,6 +1,8 @@
 package christmas.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,4 +40,9 @@ class VisitDateTest {
         assertFalse(() -> new VisitDate(3).isWeekend());
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {3, 10, 17, 24, 25, 31})
+    void 특별_혜택_날인_경우_true를_반환한다(int date) {
+        assertTrue(() -> new VisitDate(date).isSpecificBenefitDay());
+    }
 }
