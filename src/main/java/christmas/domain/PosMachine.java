@@ -10,14 +10,15 @@ public final class PosMachine {
         int totalPrice = order.sumOfAllOrders();
         Map<Benefits, Integer> allBenefits = Benefits.allBenefits(order, date);
         Giveaway giveaway = new Giveaway(totalPrice);
-        int priceAfterBenefits = totalPrice - sumOfRealBenefits(order, date);
 
-        return new Receipt(order, totalPrice, giveaway, allBenefits, priceAfterBenefits, chooseBadge(totalPrice));
+        int priceAllBenefits = sumOfBenefits(allBenefits);
+        int priceAfterBenefits = totalPrice - sumOfBenefits(Benefits.realBenefits(order, date));
+
+        return new Receipt(order, totalPrice, giveaway, allBenefits, priceAfterBenefits, chooseBadge(priceAllBenefits));
     }
 
-    private int sumOfRealBenefits(Order order, VisitDate date) {
-        Map<Benefits, Integer> realBenefits = Benefits.realBenefits(order, date);
-        return realBenefits.values().stream()
+    private int sumOfBenefits(Map<Benefits, Integer> benefits) {
+        return benefits.values().stream()
                 .mapToInt(Integer::intValue)
                 .sum();
     }

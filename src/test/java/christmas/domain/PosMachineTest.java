@@ -34,4 +34,27 @@ class PosMachineTest {
         assertEquals(expectedBenefits, posMachine.printReceipt(date, order));
     }
 
+    @Test
+    void 혜택_내역이_없을_경우의_영수증을_반환한다() {
+        VisitDate date = new VisitDate(26);
+        Order order = new Order(List.of(new OrderDto("타파스", 1), new OrderDto("제로콜라", 1)));
+        PosMachine posMachine = new PosMachine();
+        Receipt expectedBenefits = new Receipt(
+                order,
+                order.sumOfAllOrders(),
+                new Giveaway(8500),
+                new EnumMap<>(Benefits.class) {{
+                    put(Benefits.CHRISTMAS_D_DAY, 0);
+                    put(Benefits.WEEKDAY, 0);
+                    put(Benefits.WEEKEND, 0);
+                    put(Benefits.SPECIAL, 0);
+                    put(Benefits.GIVEAWAY, 0);
+                }},
+                8500,
+                "없음"
+        );
+
+        assertEquals(expectedBenefits, posMachine.printReceipt(date, order));
+    }
+
 }
