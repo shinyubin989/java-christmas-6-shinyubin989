@@ -20,4 +20,14 @@ class SpecialBenefitCalculatorTest {
 
         assertEquals(1000, actual);
     }
+
+    @Test
+    void 특별_할인_혜택_적용_날짜가_아닌경우_할인_금액을_반환한다() {
+        Order order = new Order(List.of(new OrderDto("양송이수프", 2)));
+        VisitDate visitDate = new VisitDate(26);
+
+        int actual = new SpecialBenefitCalculator().calculate(order, visitDate);
+
+        assertEquals(0, actual);
+    }
 }
