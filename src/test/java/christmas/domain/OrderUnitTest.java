@@ -26,4 +26,11 @@ class OrderUnitTest {
         assertTrue(orderUnit.isDessertMenu());
     }
 
+    @Test
+    void 디저트_메뉴가_아닌_경우_false를_반환한다() {
+        OrderUnit orderUnit = new OrderUnit("바비큐립", 1);
+
+        assertFalse(orderUnit.isDessertMenu());
+    }
+
 }
