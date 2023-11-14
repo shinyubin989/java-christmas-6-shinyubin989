@@ -80,4 +80,13 @@ class BenefitsTest {
         assertEquals(0, benefits.get(Benefits.CHRISTMAS_D_DAY));
     }
 
+    @Test
+    void 평일_할인_대상_날짜가_아닌경우_혜택을_반환하지_않는다() {
+        Order order = new Order(List.of(new OrderDto("초코케이크", 1)));
+        VisitDate visitDate = new VisitDate(1);
+
+        Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
+
+        assertEquals(0, benefits.get(Benefits.WEEKDAY));
+    }
 }
