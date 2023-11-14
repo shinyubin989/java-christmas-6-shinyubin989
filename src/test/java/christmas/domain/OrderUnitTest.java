@@ -19,4 +19,11 @@ class OrderUnitTest {
         assertDoesNotThrow(() -> new OrderUnit("양송이수프", 1));
     }
 
+    @Test
+    void 디저트_메뉴의_경우_true를_반환한다() {
+        OrderUnit orderUnit = new OrderUnit("초코케이크", 1);
+
+        assertTrue(orderUnit.isDessertMenu());
+    }
+
 }
