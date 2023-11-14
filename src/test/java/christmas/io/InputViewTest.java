@@ -88,4 +88,12 @@ class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
+
+    @Test
+    void 메뉴_포맷이_적합하지_않은경우_예외를_발생시킨다() {
+        InputView inputView = new InputView(() -> "양송이수프-1,타파스");
+        assertThatThrownBy(inputView::readMenus)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
 }
