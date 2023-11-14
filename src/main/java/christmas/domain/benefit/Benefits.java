@@ -4,6 +4,7 @@ import christmas.domain.Constants;
 import christmas.domain.Order;
 import christmas.domain.VisitDate;
 
+import java.util.EnumMap;
 import java.util.Map;
 
 public enum Benefits {
@@ -25,7 +26,7 @@ public enum Benefits {
 
     public static Map<Benefits, Integer> allBenefits(Order order, VisitDate date) {
         if (order.sumOfAllOrders() < Constants.MINIMUM_BENEFIT_PRICE.getValue()) {
-            return zeroBenefits();
+            return zeroAllBenefits();
         }
         return Map.ofEntries(
                 Map.entry(CHRISTMAS_D_DAY, CHRISTMAS_D_DAY.benefitCalculator.calculate(order, date)),
@@ -38,17 +39,16 @@ public enum Benefits {
 
     public static Map<Benefits, Integer> realBenefits(Order order, VisitDate date) {
         if (order.sumOfAllOrders() < Constants.MINIMUM_BENEFIT_PRICE.getValue()) {
-            return zeroBenefits();
+            Map<Benefits, Integer> realBenefits = new EnumMap<>(zeroAllBenefits());
+            realBenefits.remove(GIVEAWAY);
+            return realBenefits;
         }
-        return Map.ofEntries(
-                Map.entry(CHRISTMAS_D_DAY, CHRISTMAS_D_DAY.benefitCalculator.calculate(order, date)),
-                Map.entry(WEEKDAY, WEEKDAY.benefitCalculator.calculate(order, date)),
-                Map.entry(WEEKEND, WEEKEND.benefitCalculator.calculate(order, date)),
-                Map.entry(SPECIAL, SPECIAL.benefitCalculator.calculate(order, date))
-        );
+        Map<Benefits, Integer> realBenefits = new EnumMap<>(allBenefits(order, date));
+        realBenefits.remove(GIVEAWAY);
+        return realBenefits;
     }
 
-    private static Map<Benefits, Integer> zeroBenefits() {
+    private static Map<Benefits, Integer> zeroAllBenefits() {
         return Map.ofEntries(
                 Map.entry(CHRISTMAS_D_DAY, 0),
                 Map.entry(WEEKDAY, 0),
