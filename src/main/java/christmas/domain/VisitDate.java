@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -9,7 +10,11 @@ public class VisitDate {
     private final LocalDate date;
 
     public VisitDate(int day) {
-        this.date = LocalDate.of(2023, 12, day);
+        try {
+            this.date = LocalDate.of(2023, 12, day);
+        } catch (DateTimeException e) {
+            throw new IllegalArgumentException(DomainException.INVALID_DATE.getMessage());
+        }
     }
 
     public boolean isWeekend() {
