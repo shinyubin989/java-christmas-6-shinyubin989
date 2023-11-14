@@ -33,4 +33,9 @@ class VisitDateTest {
         assertTrue(() -> new VisitDate(1).isWeekend());
     }
 
+    @Test
+    void 주중인경우_false를_반환한다() {
+        assertFalse(() -> new VisitDate(3).isWeekend());
+    }
+
 }
