@@ -21,4 +21,11 @@ class VisitDateTest {
                 .hasMessageContaining("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
+    @Test
+    void 일자를_1에서_31_사이의_숫자로_입력하면_예외가_발생하지_않는다() {
+        assertDoesNotThrow(() -> new VisitDate(1));
+        assertDoesNotThrow(() -> new VisitDate(15));
+        assertDoesNotThrow(() -> new VisitDate(31));
+    }
+
 }
