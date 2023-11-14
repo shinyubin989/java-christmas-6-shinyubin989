@@ -2,6 +2,7 @@ package christmas.domain;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Objects;
 
 final class Giveaway {
 
@@ -15,6 +16,19 @@ final class Giveaway {
     }
 
     Map<Meal, Integer> getGiveaways() {
-        return giveaways;
+        return new EnumMap<>(giveaways);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Giveaway giveaway = (Giveaway) o;
+        return Objects.equals(giveaways, giveaway.giveaways);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(giveaways);
     }
 }

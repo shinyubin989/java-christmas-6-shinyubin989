@@ -26,4 +26,12 @@ class GiveawayTest {
         assertTrue(giveaways.isEmpty());
     }
 
+    @Test
+    void 총_주문_금액이_동일할_경우_Giveaway_객체도_동일하다() {
+        Giveaway giveawayA = new Giveaway(120_000);
+        Giveaway giveawayB = new Giveaway(120_000);
+
+        assertEquals(giveawayA, giveawayB);
+    }
+
 }
