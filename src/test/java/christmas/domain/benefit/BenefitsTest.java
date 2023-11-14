@@ -37,4 +37,15 @@ class BenefitsTest {
         assertEquals(expected, benefits.get(Benefits.WEEKDAY));
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1,10115", "16,10115", "29,10115", "30,10115"}, delimiter = ',')
+    void 주말에_맞는_혜택을_반환한다(int date, int expected) {
+        Order order = new Order(List.of(new OrderDto("양송이수프", 10), new OrderDto("해산물파스타", 5), new OrderDto("초코케이크", 2), new OrderDto("아이스크림", 2)));
+        VisitDate visitDate = new VisitDate(date);
+
+        Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
+
+        assertEquals(expected, benefits.get(Benefits.WEEKEND));
+    }
+
 }
