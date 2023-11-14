@@ -8,7 +8,7 @@ public class VisitDate {
 
     private final LocalDate date;
 
-    VisitDate(int day) {
+    public VisitDate(int day) {
         this.date = LocalDate.of(2023, 12, day);
     }
 
