@@ -14,4 +14,9 @@ class OrderUnitTest {
                 .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
+    @Test
+    void 정상적인_단건_주문의_경우_예외를_발생시키지_않는다() {
+        assertDoesNotThrow(() -> new OrderUnit("양송이수프", 1));
+    }
+
 }
