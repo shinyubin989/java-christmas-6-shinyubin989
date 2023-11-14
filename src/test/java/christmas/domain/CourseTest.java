@@ -22,4 +22,9 @@ class CourseTest {
         assertFalse(Course.doesOrderOnlyContainBeverage(meals));
     }
 
+    @Test
+    void isDessertMenu_메소드는_디저트_메뉴라면_true를_반환한다() {
+        assertTrue(Course.isDessertMenu(Meal.CHOCOLATE_CAKE));
+    }
+
 }
