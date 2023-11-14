@@ -70,11 +70,4 @@ public class Order {
     public int hashCode() {
         return Objects.hash(order);
     }
-
-    @Override
-    public String toString() {
-        StringJoiner joiner = new StringJoiner("\n");
-        order.forEach(it -> joiner.add(it.toString()));
-        return joiner.toString();
-    }
 }

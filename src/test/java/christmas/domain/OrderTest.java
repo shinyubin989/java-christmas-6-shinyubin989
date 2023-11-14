@@ -3,7 +3,9 @@ package christmas.domain;
 import christmas.dto.OrderDto;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,5 +63,15 @@ class OrderTest {
         int expected = 10;
 
         assertEquals(expected, order.countMainMenuNum());
+    }
+
+    @Test
+    void 주문_내역을_맵으로_반환한다() {
+        Order order = new Order(List.of(new OrderDto("제로콜라", 5), new OrderDto("크리스마스파스타", 10), new OrderDto("초코케이크", 5)));
+        Map<String, Integer> expected = Map.ofEntries(Map.entry("제로콜라", 5), Map.entry("크리스마스파스타", 10), Map.entry("초코케이크", 5));
+
+        Map<String, Integer> actual = order.getOrderDetails();
+
+        actual.keySet().forEach(key -> assertEquals(expected.get(key), actual.get(key)));
     }
 }
