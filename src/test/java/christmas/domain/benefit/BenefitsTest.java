@@ -99,4 +99,14 @@ class BenefitsTest {
 
         assertEquals(0, benefits.get(Benefits.WEEKEND));
     }
+
+    @Test
+    void 특별_할인_대상_날짜가_아닌경우_혜택을_반환하지_않는다() {
+        Order order = new Order(List.of(new OrderDto("티본스테이크", 1)));
+        VisitDate visitDate = new VisitDate(26);
+
+        Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
+
+        assertEquals(0, benefits.get(Benefits.SPECIAL));
+    }
 }
