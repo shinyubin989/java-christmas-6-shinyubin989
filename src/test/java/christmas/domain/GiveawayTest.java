@@ -17,4 +17,13 @@ class GiveawayTest {
         assertEquals(1, giveaways.get(Meal.CHAMPAGNE));
     }
 
+    @Test
+    void 총_주문_금액이_12만원_미만일때_증정이벤트는_없다() {
+        Giveaway actual = new Giveaway(119_999);
+
+        Map<Meal, Integer> giveaways = actual.getGiveaways();
+
+        assertTrue(giveaways.isEmpty());
+    }
+
 }
