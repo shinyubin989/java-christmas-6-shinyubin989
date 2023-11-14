@@ -2,7 +2,9 @@ package christmas.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,11 +29,22 @@ class GiveawayTest {
     }
 
     @Test
-    void 총_주문_금액이_동일할_경우_Giveaway_객체도_동일하다() {
+    void Giveaway_내부필드가_동일하다면_객체도_동일하다() {
         Giveaway giveawayA = new Giveaway(120_000);
         Giveaway giveawayB = new Giveaway(120_000);
 
         assertEquals(giveawayA, giveawayB);
     }
 
+    @Test
+    void Giveaway_내부_필드가_동일하다면_hash_자료구조에서도_동일한_객체로_취급한다() {
+        Giveaway giveawayA = new Giveaway(120_000);
+        Giveaway giveawayB = new Giveaway(120_000);
+        Set<Giveaway> set = new HashSet<>();
+
+        set.add(giveawayA);
+        set.add(giveawayB);
+
+        assertEquals(1, set.size());
+    }
 }
