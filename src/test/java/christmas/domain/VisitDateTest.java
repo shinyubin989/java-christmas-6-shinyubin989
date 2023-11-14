@@ -14,4 +14,11 @@ class VisitDateTest {
                 .hasMessageContaining("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
+    @Test
+    void 일자를_0일_이하로_입력하면_예외를_반환한다() {
+        assertThatThrownBy(() -> new VisitDate(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+    }
+
 }
