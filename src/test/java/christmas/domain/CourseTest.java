@@ -37,4 +37,9 @@ class CourseTest {
         assertTrue(Course.isMainMenu(Meal.T_BONE_STEAK));
     }
 
+    @Test
+    void isMainMenu_메소드는_메인_메뉴가_아니라면_false를_반환한다() {
+        assertFalse(Course.isMainMenu(Meal.CHOCOLATE_CAKE));
+    }
+
 }
