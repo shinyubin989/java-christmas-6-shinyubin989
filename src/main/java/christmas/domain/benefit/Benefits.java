@@ -1,5 +1,6 @@
 package christmas.domain.benefit;
 
+import christmas.domain.Constants;
 import christmas.domain.Order;
 import christmas.domain.VisitDate;
 
@@ -23,6 +24,9 @@ public enum Benefits {
     }
 
     public static Map<Benefits, Integer> allBenefits(Order order, VisitDate date) {
+        if (order.sumOfAllOrders() < Constants.MINIMUM_BENEFIT_PRICE.getValue()) {
+            return zeroBenefits();
+        }
         return Map.ofEntries(
                 Map.entry(CHRISTMAS_D_DAY, CHRISTMAS_D_DAY.benefitCalculator.calculate(order, date)),
                 Map.entry(WEEKDAY, WEEKDAY.benefitCalculator.calculate(order, date)),
@@ -33,11 +37,24 @@ public enum Benefits {
     }
 
     public static Map<Benefits, Integer> realBenefits(Order order, VisitDate date) {
+        if (order.sumOfAllOrders() < Constants.MINIMUM_BENEFIT_PRICE.getValue()) {
+            return zeroBenefits();
+        }
         return Map.ofEntries(
                 Map.entry(CHRISTMAS_D_DAY, CHRISTMAS_D_DAY.benefitCalculator.calculate(order, date)),
                 Map.entry(WEEKDAY, WEEKDAY.benefitCalculator.calculate(order, date)),
                 Map.entry(WEEKEND, WEEKEND.benefitCalculator.calculate(order, date)),
                 Map.entry(SPECIAL, SPECIAL.benefitCalculator.calculate(order, date))
+        );
+    }
+
+    private static Map<Benefits, Integer> zeroBenefits() {
+        return Map.ofEntries(
+                Map.entry(CHRISTMAS_D_DAY, 0),
+                Map.entry(WEEKDAY, 0),
+                Map.entry(WEEKEND, 0),
+                Map.entry(SPECIAL, 0),
+                Map.entry(GIVEAWAY, 0)
         );
     }
 

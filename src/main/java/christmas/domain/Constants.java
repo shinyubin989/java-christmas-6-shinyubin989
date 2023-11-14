@@ -9,6 +9,7 @@ public enum Constants {
     WEEKDAY_BENEFIT_PRICE(2023),
     WEEKEND_BENEFIT_PRICE(2023),
     SPECIAL_DAY_BENEFIT_PRICE(1000),
+    MINIMUM_BENEFIT_PRICE(10_000),
     ;
     private final int value;
 
