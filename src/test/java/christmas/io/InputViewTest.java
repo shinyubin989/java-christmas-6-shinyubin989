@@ -33,4 +33,12 @@ class InputViewTest {
         assertEquals(expected, inputView.readMenus());
     }
 
+    @Test
+    void 주문_메뉴가_비어있을_경우_예외를_발생시킨다() {
+        InputView inputView = new InputView(() -> "");
+        assertThatThrownBy(inputView::readMenus)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+
 }
