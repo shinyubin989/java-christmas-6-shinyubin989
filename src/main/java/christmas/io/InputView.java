@@ -42,14 +42,17 @@ public final class InputView implements InputPort {
     private OrderDto toOrderDto(String order) {
         List<String> splitOrder = List.of(order.split("-", -1));
         if(splitOrder.size() != 2) throw new IllegalArgumentException(IoException.MENU_FORMAT_IS_INVALID.getMessage());
-        return new OrderDto(splitOrder.get(0), mapToInt(splitOrder.get(1)));
+        return new OrderDto(splitOrder.get(0), mapToPositiveInt(splitOrder.get(1)));
     }
 
-    private int mapToInt(String num) {
+    private int mapToPositiveInt(String num) {
+        int target;
         try {
-            return Integer.parseInt(num);
+            target = Integer.parseInt(num);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(IoException.NUM_OF_ORDER_IS_NOT_NUMBER.getMessage());
         }
+        if(target < 1) throw new IllegalArgumentException(IoException.INVALID_ORDER.getMessage());
+        return target;
     }
 }
