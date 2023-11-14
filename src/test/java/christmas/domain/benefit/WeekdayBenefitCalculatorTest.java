@@ -31,4 +31,14 @@ class WeekdayBenefitCalculatorTest {
         assertEquals(0, actual);
     }
 
+    @Test
+    void 평일이지만_디저트메뉴를_주문하지_않은_경우_할인_금액을_반환한다() {
+        Order order = new Order(List.of(new OrderDto("양송이수프", 2)));
+        VisitDate visitDate = new VisitDate(28);
+
+        int actual = new WeekendBenefitCalculator().calculate(order, visitDate);
+
+        assertEquals(0, actual);
+    }
+
 }
