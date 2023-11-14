@@ -41,4 +41,13 @@ class InputViewTest {
                 .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
+    @Test
+    void 주문_갯수가_숫자가_아닐경우_예외를_발생시킨다() {
+        InputView inputView = new InputView(() -> "양송이수프-a");
+        assertThatThrownBy(inputView::readMenus)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+
+
 }
