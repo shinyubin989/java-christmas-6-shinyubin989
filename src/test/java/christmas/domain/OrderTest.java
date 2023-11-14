@@ -30,4 +30,9 @@ class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
+
+    @Test
+    void 정상적인_주문의_경우_예외를_반환하지_않는다() {
+        assertDoesNotThrow(() -> new Order(List.of(new OrderDto("제로콜라", 5), new OrderDto("양송이수프", 10), new OrderDto("초코케이크", 5))));
+    }
 }
