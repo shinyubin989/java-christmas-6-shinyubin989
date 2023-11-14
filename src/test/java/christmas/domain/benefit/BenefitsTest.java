@@ -59,4 +59,15 @@ class BenefitsTest {
         assertEquals(expected, benefits.get(Benefits.SPECIAL));
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1,25000", "31,25000"}, delimiter = ',')
+    void 증정이벤트_대상인_금액의_경우_혜택을_반환한다(int date, int expected) {
+        Order order = new Order(List.of(new OrderDto("티본스테이크", 2), new OrderDto("초코케이크", 1)));
+        VisitDate visitDate = new VisitDate(date);
+
+        Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
+
+        assertEquals(expected, benefits.get(Benefits.GIVEAWAY));
+    }
+
 }
