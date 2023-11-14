@@ -35,4 +35,13 @@ class OrderTest {
     void 정상적인_주문의_경우_예외를_반환하지_않는다() {
         assertDoesNotThrow(() -> new Order(List.of(new OrderDto("제로콜라", 5), new OrderDto("양송이수프", 10), new OrderDto("초코케이크", 5))));
     }
+
+    @Test
+    void 총주문_금액을_계산한다() {
+        Order order = new Order(List.of(new OrderDto("제로콜라", 5), new OrderDto("양송이수프", 10), new OrderDto("초코케이크", 5)));
+
+        int expected = 5 * Meal.ZERO_COLA.getPrice() + 10 * Meal.MUSHROOM_SOUP.getPrice() + 5 * Meal.CHOCOLATE_CAKE.getPrice();
+
+        assertEquals(expected, order.sumOfAllOrders());
+    }
 }
