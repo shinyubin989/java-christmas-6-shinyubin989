@@ -15,4 +15,11 @@ class CourseTest {
         assertTrue(Course.doesOrderOnlyContainBeverage(meals));
     }
 
+    @Test
+    void 음료외의_주문이_존재할_경우_False를_반환한다() {
+        List<Meal> meals = List.of(Meal.ZERO_COLA, Meal.RED_WINE, Meal.CHAMPAGNE, Meal.CHRISTMAS_PASTA);
+
+        assertFalse(Course.doesOrderOnlyContainBeverage(meals));
+    }
+
 }
