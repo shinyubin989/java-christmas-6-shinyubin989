@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -118,5 +119,19 @@ class BenefitsTest {
         Map<Benefits, Integer> benefits = Benefits.allBenefits(order, visitDate);
 
         assertEquals(0, benefits.get(Benefits.GIVEAWAY));
+    }
+
+    @Test
+    void 할인후_예상_금액에서는_증정이벤트_할인을_제외한다() {
+        Order order = new Order(List.of(new OrderDto("티본스테이크", 1)));
+        VisitDate visitDate = new VisitDate(3);
+
+        Set<Benefits> benefits = Benefits.realBenefits(order, visitDate).keySet();
+
+        assertTrue(benefits.contains(Benefits.CHRISTMAS_D_DAY));
+        assertTrue(benefits.contains(Benefits.WEEKDAY));
+        assertTrue(benefits.contains(Benefits.WEEKEND));
+        assertTrue(benefits.contains(Benefits.SPECIAL));
+        assertFalse(benefits.contains(Benefits.GIVEAWAY));
     }
 }
